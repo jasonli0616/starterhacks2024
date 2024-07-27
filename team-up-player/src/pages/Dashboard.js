@@ -5,11 +5,11 @@ import {useEffect, useState} from "react";
 
 function DashboardBg() {
   //return <style>{'body {background-color: #BBE3D4; }' } </style>
-  return <img src="https://i.imgur.com/GiqDyDR.png" width={1920} height={1080} alt="background" />;
+  return <img src="https://i.imgur.com/GiqDyDR.png" width={1920} height={1080} alt="background" />; //image of blue background with lines
 }
 
-function EcovaderLogo() {
-  return <img src="https://i.imgur.com/IXuOuum.png" width={500} height={420} alt="ecovader logo" />;
+function TeamUpLogo() {
+  return <img src="https://i.imgur.com/2gRXjvM.png" width={500} height={420} alt="ecovader logo" />;
 }
 
 function InputComponent() {
@@ -52,11 +52,10 @@ function HeaderBg() {
 function Dashboard() {
   return (
     <div className = "Dashboard">
-      <DashboardBg />
-      <HeaderBg />
       <header className = "flex flex-col gap-4 justify-center items-center">
         <br />
-        <EcovaderLogo />
+        <DashboardBg />
+        <TeamUpLogo />
         <h1 className="text-9xl font-bold text-white stroke-black">
           Together We Thrive: <i>Community-Led Solutions to Invasive Species!</i>
         </h1>
