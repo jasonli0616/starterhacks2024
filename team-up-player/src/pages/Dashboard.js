@@ -1,6 +1,6 @@
+"use client"
+
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {useEffect, useState} from "react";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
