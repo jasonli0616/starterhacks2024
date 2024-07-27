@@ -6,9 +6,7 @@ const options = {};
 let client;
 let clientPromise;
 
-if (!process.env.MONGODB_URI) {
-  console.log("Please add your Mongo URI to .env.local");
-}
+console.log("uri", uri);
 
 if (process.env.NODE_ENV === "development") {
   // In development mode, use a global variable so that the client is reused across hot reloads

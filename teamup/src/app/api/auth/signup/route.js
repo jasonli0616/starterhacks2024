@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import clientPromise from "../../../components/mongodb";
-import validateInputs from "../../../components/validateInput";
-import fixInfo from "../../../components/fixInfoSignUp";
 
 export async function POST(req, res) {
   const data = await req.json();
