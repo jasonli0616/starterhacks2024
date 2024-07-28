@@ -11,6 +11,8 @@
     justify-content: center;
     transition: all 0.1s;
     margin: 30px;
+    border: none;
+    cursor: pointer;
 }
 
 .matching-button:hover {
