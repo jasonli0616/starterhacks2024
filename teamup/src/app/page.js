@@ -69,9 +69,12 @@ function Dashboard() {
 function DashboardWrapper() {
   return (
     <>
+      <h1>Hello</h1>
+      <a href="/api/auth/login">Login</a>
       <Dashboard />
     </>
   )
 }
 
 export default DashboardWrapper;
+
