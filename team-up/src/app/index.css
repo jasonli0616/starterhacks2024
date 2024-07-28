@@ -1,94 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.Dashboard {
-    text-align: center;
-}
-
-.Ecovaderlogo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-.InputComponent {
-    height: 100vmin;
-    pointer-events: none;
-    width: 300vmin;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .Ecovaderlogo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.Dashboard-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.Dashboard-link {
-    color: #111111;
-}
-
-@keyframes Ecovaderlogo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(
+        to bottom left,
+        rgb(8, 26, 60),
+        rgb(109, 138, 188)
+    );
+    background-attachment: fixed;
 }
 
 button {
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-    background-color: #b2e3ff;
-    border-radius: 8px;
-    border-bottom: 4px solid #a0abb4;
-    color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: "Oxygen", sans-serif;
-    letter-spacing: 2px;
+    font-size: 15px;
 }
 
-button:hover {
-    background-color: #b2e3ff;
-    border: none;
-    border-radius: 8px;
-    border-bottom: 4px solid #a0abb4;
-    color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: "Oxygen", sans-serif;
-    letter-spacing: 2px;
-}
-
-button:active {
-    background-color: #b2e3ff;
-    border: none;
-    border-radius: 8px;
-    border-bottom: 4px solid #a0abb4;
-    color: #000000;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-family: "Oxygen", sans-serif;
-    letter-spacing: 2px;
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }

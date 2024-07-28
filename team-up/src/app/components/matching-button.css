@@ -1,6 +1,6 @@
 .matching-button {
-    background-color: #99C43E;
-    width: 177px;
+    background-color: #99c43e;
+    width: 90%;
     height: 50px;
     border-radius: 10px;
     color: white;
@@ -10,6 +10,9 @@
     align-items: center;
     justify-content: center;
     transition: all 0.1s;
+    margin: 30px;
+    border: none;
+    cursor: pointer;
 }
 
 .matching-button:hover {
@@ -17,5 +20,5 @@
 }
 
 .matching-button-full {
-    width: 381px;
+    width: 90% !important;
 }

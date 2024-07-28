@@ -1,94 +1,68 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import "./index.css";
-import "./globals.css";
-
-function DashboardBg() {
-  //return <style>{'body {background-color: #BBE3D4; }' } </style>
-  return (
-    <img
-      src="https://i.imgur.com/GiqDyDR.png"
-      width={1920}
-      height={1080}
-      alt="background"
-    />
-  ); //image of blue background with lines
-}
+import "./dashboard.css";
+import MatchingButton from "./components/MatchingButton";
+import { Apple, Github, Google } from "react-bootstrap-icons";
 
 function TeamUpLogo() {
-  return (
-    <img
-      src="https://i.imgur.com/2gRXjvM.png"
-      width={500}
-      height={420}
-      alt="ecovader logo"
-    />
-  );
+  return <img src={"logo.png"} width={"300px"} alt="TeamUp Logo" />;
 }
 
-function InputComponent() {
-  // Declare state variables to hold input values
-  const [inputValue, setInputValue] = useState("");
+async function handleManualLogin(e) {
+  e.preventDefault();
 
-  // Event handler to update the state when the input changes
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  // let formData = new FormData(e.target);
 
-  return (
-    <div>
-      {/* Input field with an onChange event */}
-      <input
-        style={{
-          width: "60%",
-          height: "80%",
-          padding: "10px",
-          fontSize: "16px",
-          borderRadius: "10px",
-          border: "0.5px solid #0B3B36",
-          boxShadow: "0px 0px 10px 0px #0B3B36",
-          boxSizing: "border-box",
-          textAlign: "left",
-        }}
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Enter your email address to continue: "
-      />
-    </div>
-  );
-}
+  // const response = await fetch('/api/manualauth/login', {
+  //   method: 'POST',
+  //   body: formData,
+  // })
 
-function HeaderBg() {
-  return <style>{"header {background-color: #236D5E; }"} </style>;
+  // // Handle response if necessary
+  // const data = await response.json();
+  // console.log(data);
+  // TODO
 }
 
 function Dashboard() {
   return (
-    <div className="Dashboard">
-      {/* <header className="flex flex-col gap-4 justify-center items-center">
-        <br />
-        <DashboardBg />
-        <TeamUpLogo />
-        <h1 className="text-9xl font-bold text-white stroke-black">
-          Together We Thrive:{" "}
-          <i>Community-Led Solutions to Invasive Species!</i>
-        </h1>
-        <br />
-      </header> */}
+    <div className="w-full dashboard">
+      <TeamUpLogo />
+
+      <div className="m-2 w-full signup-prompt">
+        <h3>Sign up or log in to get started.</h3>
+
+        <MatchingButton link="/api/auth/login" full>
+          Continue with <Google style={{ padding: "3px" }} />{" "}
+          <Github style={{ padding: "3px" }} />{" "}
+          <Apple style={{ padding: "3px" }} />
+        </MatchingButton>
+
+        <h3>or</h3>
+
+        <form onSubmit={handleManualLogin}>
+          <input
+            type="email"
+            required
+            name="email"
+            id="email"
+            placeholder="Email address"
+          />
+          <input
+            type="password"
+            required
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+          <MatchingButton full type="submit">
+            Continue with email
+          </MatchingButton>
+        </form>
+      </div>
     </div>
   );
 }
 
-function DashboardWrapper() {
-  return (
-    <>
-      <h1 className="bg-red-100">Hello</h1>
-      <a href="/api/auth/login">Login</a> */
-      <Dashboard />
-    </>
-  );
-}
-
-export default DashboardWrapper;
+export default Dashboard;

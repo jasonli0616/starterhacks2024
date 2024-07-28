@@ -1,15 +1,19 @@
 import Link from "next/link";
 import "./matching-button.css";
 
-function MatchingButton({link, text, full}) {
 
-    let test = "https://google.com";
+function MatchingButton({link, full, onclick, type, children}) {
+
     let className = "matching-button" + (full ? " matching-button-full" : "");
 
     return (
-        <Link className={className} href={link}>
-            {text}
-        </Link>
+
+        link ? 
+            <Link className={className} href={link}>
+                {children}
+            </Link>
+            :
+            <button className={className} type={type} onClick={onclick}>{children}</button>
     );
 }
 
