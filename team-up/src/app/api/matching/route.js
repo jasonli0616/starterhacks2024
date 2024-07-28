@@ -31,7 +31,8 @@ export async function POST(req, res) {
 
         for (let preference of preferences) {
           if (foundUser.preferences[preference]) {
-            times++;
+            let value = user.preferences[preference] - foundUser.preferences[preference];
+            times +=  value;
           }
         }
 
