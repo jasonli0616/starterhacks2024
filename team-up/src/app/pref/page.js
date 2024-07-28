@@ -68,10 +68,9 @@ function Page() {
         console.log("Success");
       }
     });
-
-    const router = useRouter();
-    router.push("/match");
   };
+
+  const router = useRouter();
 
   const handleButtonClick = (key) => {
     console.log(info);
@@ -140,7 +139,10 @@ function Page() {
           ))}
         </div>
       </div>
-      <MatchingButton full onclick={submit}>Continue</MatchingButton>
+      <MatchingButton full onclick={() => {
+        submit();
+        router.push("/match");
+      }}>Continue</MatchingButton>
       <div className="w-full text-center mt-2">
         <span className="text-white text-base leading-tight">
           Don't see your sport?

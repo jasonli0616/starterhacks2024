@@ -4,6 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import MatchingButton from "../components/MatchingButton";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -32,24 +33,25 @@ function Page() {
 
   return (
     <div className="overflow-hidden w-full bg-[#283757] flex flex-col items-center justify-evenly">
-      <div className="w-full bg-[#79849c] h-[80px]"></div>
+      <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-end">
+        <MatchingButton link="/api/auth/logout">Log out</MatchingButton>
+      </div>
       <div className="mt-7 w-96 h-10 bg-white rounded-[10px] shadow border border-black flex items-center justify-evenly">
         <Image src="/search.svg" height={30} width={30} alt="search" />
-        <div className="w-[324px] h-[25px] text-[#6c6161] text-[15px] font-extrabold font-['Nunito']">
+        <div className="w-[324px] h-[25px] text-[#6c6161] text-[15px]">
           Search for sports and tournaments
         </div>
       </div>
       <div className="flex items-center mt-2 p-2 w-full">
         <Image src="/mapPin.svg" height={30} width={30} alt="pin" />
-        <div className="pl-3 text-white text-[17px] font-bold font-['Nunito']">
-          Now in Toronto, ON
+        <div className="pl-3 text-white text-[17px] font-bold">
+          Now in Waterloo, ON
         </div>
       </div>
-      <div className="mt-4 w-[90%] h-[50px] px-[46px] py-5 bg-[#99c43e] rounded-[20px] shadow justify-center items-center gap-px inline-flex">
-        <div className="text-white text-lg font-bold font-['Nunito']">
+      
+      <MatchingButton full link="/embed">
           View the location of your friends
-        </div>
-      </div>
+        </MatchingButton>
       <Image
         src="/reminder.png"
         width={800}
@@ -181,7 +183,7 @@ const Box = ({ src, users }) => {
         className="mx-3 rounded-lg"
       />
       <div className="w-[200px] mt-2">
-        <div className="w-[177px] h-[29px] text-center text-white text-[20px] font-extrabold font-['Nunito']">
+        <div className="w-[177px] h-[29px] text-center text-white text-[20px]">
           Recommendation :
         </div>
         {users.map((user, index) => (
@@ -189,7 +191,7 @@ const Box = ({ src, users }) => {
             key={index}
             className="user-card flex items-center justify-between mt-1"
           >
-            <div className="text-white text-[15px] font-semibold font-['Inter']">
+            <div className="text-white text-[15px] font-semibold">
               {user.name}
             </div>
             <Image src="/chat.svg" width={30} height={30} alt="chat" />

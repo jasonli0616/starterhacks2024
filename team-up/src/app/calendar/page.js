@@ -2,6 +2,7 @@
 
 import CalendarEmbeded from './CalendarEmbeded.js';
 import "../index.css";
+import MatchingButton from '../components/MatchingButton.js';
 
 const HomePage = () => {
   return (
@@ -10,14 +11,13 @@ const HomePage = () => {
       <h1 style={{ fontSize: '36px' }}><b>Find a date that works for both of you!</b></h1>
       <br />
       <CalendarEmbeded />
-      <br />
-      <br />
-      <button style={{ width: '260px', backgroundColor: '#99C43E', border: 'none', padding: '10px', color: 'white'}}>
-          <a href="/embed" style={{ textDecoration: 'none', color: 'inherit' }}>Next!</a>
-        </button>
-      <br />
-      <br />
-      <br />
+      
+      <div className="flex justify-evenly items-center flex-col">
+        <MatchingButton link="/embed">Map</MatchingButton>
+        <MatchingButton link="/match">Back to matches</MatchingButton>
+      </div>
+
+
     </div>
   );
 };
