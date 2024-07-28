@@ -2,6 +2,7 @@
     background-color: #99c43e;
     width: 40%;
     height: 50px;
+    min-height: 40px;
     border-radius: 10px;
     color: white;
     text-decoration: none;
@@ -13,6 +14,7 @@
     margin: 30px;
     border: none;
     cursor: pointer;
+    max-width: 200px;
 }
 
 .matching-button:hover {
@@ -21,4 +23,5 @@
 
 .matching-button-full {
     width: 80%;
+    max-width: 600px;
 }
