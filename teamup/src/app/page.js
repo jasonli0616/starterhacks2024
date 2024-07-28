@@ -18,10 +18,20 @@ function Dashboard() {
         
         <div className="signup-prompt">
           <h3>Sign up or log in to get started.</h3>
+
+
           <MatchingButton link="/api/auth/login" full>
             Continue with <Google style={{padding: '3px'}} /> <Github style={{padding: '3px'}} /> <Apple style={{padding: '3px'}} />
           </MatchingButton> 
-          <MatchingButton link="/api/manualauth/login" full>Continue with email</MatchingButton>
+
+
+          <h3>or</h3>
+
+
+          <input type="email" name="inputemail" id="inputemail" placeholder="Email address" />
+          <input type="password" name="inputpassword" id="inputpassword" placeholder="Password" />
+          <MatchingButton full link="#">Continue with email</MatchingButton>
+
         </div>
     </div>
   );
