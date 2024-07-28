@@ -44,6 +44,11 @@ export async function POST(req, res) {
         { success: true, userIDs: Object.keys(userIDs).sort((a, b) => userIDs[b] - userIDs[a]) }
       )
 
+    }else {
+      return NextResponse.json({
+        success: false,
+        message: "User does not exist"
+      });
     }
 
     //Object.keys(obj).filter(k => obj[k]);
