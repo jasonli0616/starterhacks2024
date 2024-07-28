@@ -4,7 +4,7 @@ import "./matching-button.css";
 function MatchingButton({link, text, full}) {
 
     let test = "https://google.com";
-    let className = "matching-button" + (full ? " full" : "");
+    let className = "matching-button" + (full ? " matching-button-full" : "");
 
     return (
         <Link className={className} href={link}>
