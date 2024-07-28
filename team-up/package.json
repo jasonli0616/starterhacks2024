@@ -1,0 +1,28 @@
+{
+  "name": "team-up",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@google/generative-ai": "^0.16.0",
+    "chalk": "^5.3.0",
+    "mongodb": "^6.8.0",
+    "next": "^14.2.5",
+    "prompt-sync": "^4.2.0",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
