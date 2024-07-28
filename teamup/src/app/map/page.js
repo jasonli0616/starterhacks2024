@@ -9,12 +9,12 @@ import 'leaflet/dist/leaflet.css';
 
 
 function Map(){
-  const position = [300, 200]; 
+  const position = [56.1304, 106.3468]; 
   return (
     <div className="map">
-      <MapContainer center={position} zoom={6} scrollWheelZoom={true}>
+      <MapContainer center={position} zoom={4} scrollWheelZoom={true}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={position}>
