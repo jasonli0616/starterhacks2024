@@ -21,13 +21,13 @@ export async function POST(req, res) {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   try {
-    const prompt = await req.json();
-    console.log(prompt, "prompt");
+    const prompt = `Here is the sport: ${req.json().sport}. Generate a JSON array of necessary equipment related to this sport. Only necessary stuff, not like first aid kit, water bottle, etc. Output in an array of strings with no other markup, with all lower case characters.`;
+
     const result = await model.generateContent(prompt.prompt);
     const response = await result.response;
     console.log(response.text());
     const text = response.text();
-    return NextResponse.json({ success: true, answer: text });
+    return NextResponse.json({ success: true, answer: JSON.parse(text) });
   } catch (error) {
     return NextResponse.json({ success: false });
   }

@@ -117,7 +117,7 @@ function Page() {
       <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-end">
         <MatchingButton link="/api/auth/logout">Log out</MatchingButton>
       </div>
-      <div className="mt-5 w-full h-5 text-center text-white text-2xl font-bold font-['Open Sans'] leading-tight">
+      <div className="mt-5 w-full h-5 text-center text-white text-2xl leading-tight">
         Select Sports of Interest
       </div>
       <div className="w-[90%] mt-4 flex justify-evenly items-center h-[630px]">
@@ -142,16 +142,16 @@ function Page() {
       </div>
       <MatchingButton full onclick={submit}>Continue</MatchingButton>
       <div className="w-full text-center mt-2">
-        <span className="text-white text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-white text-base leading-tight">
           Don't see your sport?
         </span>
-        <span className="text-[#1a1c29] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#1a1c29] text-base leading-tight">
           {" "}
         </span>
-        <span className="text-[#cef262] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#cef262] text-base leading-tight">
           Other Sport.
         </span>
-        <span className="text-[#ef83ad] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#ef83ad] text-base leading-tight">
           {" "}
         </span>
       </div>
@@ -171,7 +171,7 @@ const Button = ({ text, handleClick }) => {
       className={`${value ? "!bg-[#249577]" : ""} bg-[#6c8e3e] w-[160px] h-[54px] rounded-[14px] justify-center items-center flex `}
       onClick={handleChange}
     >
-      <div className="text-white text-xl font-extrabold font-['Nunito']">
+      <div className="text-white text-xl">
         {text}
       </div>
     </button>
@@ -197,7 +197,7 @@ const PopUp = ({ text, value, setValue, popUp, setPopUp }) => {
           </button>
           <div className="w-full h-[4px] bg-[#f4f4f4] mt-3"> </div>
         </div>
-        <div className="w-[325px] h-5 text-center text-[#1a1c29] text-xl font-bold font-['Open Sans'] leading-tight">
+        <div className="w-[325px] h-5 text-center text-[#1a1c29] text-xl leading-tight">
           Choose Your Skill Level
         </div>
         <div className="w-full flex justify-evenly items-center">
@@ -242,7 +242,7 @@ const Box = ({ image, title, text, setValue, value }) => {
       className={`${value === title.toLowerCase() ? "border-2 border-[#99c53e]" : ""} w-[30%] h-[261px] bg-[#f4f4f4] rounded-lg flex flex-col justify-evenly items-center`}
       onClick={onClick}
     >
-      <div className="w-[90%] text-center text-[#6a6a6a] text-[15px] font-extrabold font-['Nunito']">
+      <div className="w-[90%] text-center text-[#6a6a6a] text-[15px]">
         {title}
       </div>
       <Image src={image} width={75} height={100} alt={title} />
