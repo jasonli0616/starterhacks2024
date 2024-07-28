@@ -99,21 +99,21 @@ function Page() {
         className="w-[90%] h-[60px] bg-[#99c53e] rounded-[14px]"
         onClick={submit}
       >
-        <div className="text-white text-xl font-extrabold font-['Nunito']">
-          continue{" "}
+        <div className="text-white text-xl">
+          Continue{" "}
         </div>
       </button>
       <div className="w-full text-center mt-2">
-        <span className="text-white text-base font-bold font-['Nunito'] leading-tight">
-          Don’t see your sport?
+        <span className="text-white text-base leading-tight">
+          Don't see your sport?
         </span>
-        <span className="text-[#1a1c29] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#1a1c29] text-base leading-tight">
           {" "}
         </span>
-        <span className="text-[#cef262] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#cef262] text-base leading-tight">
           Other Sport.
         </span>
-        <span className="text-[#ef83ad] text-base font-bold font-['Nunito'] leading-tight">
+        <span className="text-[#ef83ad] text-base leading-tight">
           {" "}
         </span>
       </div>
@@ -133,7 +133,7 @@ const Button = ({ text, handleClick }) => {
       className={`${value ? "!bg-[#249577]" : ""} bg-[#6c8e3e] w-[160px] h-[54px] rounded-[14px] justify-center items-center flex `}
       onClick={handleChange}
     >
-      <div className="text-white text-xl font-extrabold font-['Nunito']">
+      <div className="text-white text-xl">
         {text}
       </div>
     </button>
