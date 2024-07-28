@@ -59,27 +59,111 @@ function Page() {
       />
       <div className="overflow-x-auto w-full mt-4">
         <div className="flex space-x-4 snap-x snap-mandatory">
-          <Box
-            src={"/sports/soccer.png"}
-            users={[
-              { name: "sidak", email: "test@gmail.com" },
-              { name: "sidak", email: "test@gmail.com" },
-            ]}
-          />
-          <Box
-            src={"/sports/soccer.png"}
-            users={[
-              { name: "sidak", email: "test@gmail.com" },
-              { name: "sidak", email: "test@gmail.com" },
-            ]}
-          />
-          <Box
-            src={"/sports/soccer.png"}
-            users={[
-              { name: "sidak", email: "test@gmail.com" },
-              { name: "sidak", email: "test@gmail.com" },
-            ]}
-          />
+        <Box
+          src={"/sports/archery.png"}
+          users={[
+            { name: "John", email: "john@example.com" },
+            { name: "Jane", email: "jane@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/badminton.png"}
+          users={[
+            { name: "Alice", email: "alice@example.com" },
+            { name: "Bob", email: "bob@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/baseball.png"}
+          users={[
+            { name: "Charlie", email: "charlie@example.com" },
+            { name: "Daisy", email: "daisy@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/basketball.png"}
+          users={[
+            { name: "Ethan", email: "ethan@example.com" },
+            { name: "Fiona", email: "fiona@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/boxing.png"}
+          users={[
+            { name: "George", email: "george@example.com" },
+            { name: "Hannah", email: "hannah@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/cricket.png"}
+          users={[
+            { name: "Isaac", email: "isaac@example.com" },
+            { name: "Julia", email: "julia@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/curling.png"}
+          users={[
+            { name: "Kevin", email: "kevin@example.com" },
+            { name: "Lily", email: "lily@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/football.png"}
+          users={[
+            { name: "Mike", email: "mike@example.com" },
+            { name: "Nora", email: "nora@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/golf.png"}
+          users={[
+            { name: "Oscar", email: "oscar@example.com" },
+            { name: "Penny", email: "penny@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/hockey.png"}
+          users={[
+            { name: "Quincy", email: "quincy@example.com" },
+            { name: "Rachel", email: "rachel@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/ski.png"}
+          users={[
+            { name: "Sam", email: "sam@example.com" },
+            { name: "Tina", email: "tina@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/soccer.png"}
+          users={[
+            { name: "Uma", email: "uma@example.com" },
+            { name: "Victor", email: "victor@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/swimming.png"}
+          users={[
+            { name: "Wendy", email: "wendy@example.com" },
+            { name: "Xavier", email: "xavier@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/tabletennis.png"}
+          users={[
+            { name: "Yara", email: "yara@example.com" },
+            { name: "Zane", email: "zane@example.com" },
+          ]}
+        />
+        <Box
+          src={"/sports/tennis.png"}
+          users={[
+            { name: "Olivia", email: "olivia@example.com" },
+            { name: "Peter", email: "peter@example.com" },
+          ]}
+        />
         </div>
       </div>
     </div>
@@ -88,16 +172,16 @@ function Page() {
 
 const Box = ({ src, users }) => {
   return (
-    <div className="h-[470px] w-[250px] snap-center flex-shrink-0 mx-5">
+    <div className="h-[470px] w-[250px] snap-center flex-shrink-0 mx-5 p-4">
       <Image
         src={src}
         width={800}
-        height={400}
+        height={380}
         alt="none"
         className="mx-3 rounded-lg"
       />
       <div className="w-[200px] mt-2">
-        <div className="w-[177px] h-[29px] text-center text-black text-[15px] font-extrabold font-['Nunito']">
+        <div className="w-[177px] h-[29px] text-center text-white text-[20px] font-extrabold font-['Nunito']">
           Recommendation :
         </div>
         {users.map((user, index) => (
@@ -105,7 +189,7 @@ const Box = ({ src, users }) => {
             key={index}
             className="user-card flex items-center justify-between mt-1"
           >
-            <div className="text-black text-[10px] font-semibold font-['Inter']">
+            <div className="text-white text-[15px] font-semibold font-['Inter']">
               {user.name}
             </div>
             <Image src="/chat.svg" width={30} height={30} alt="chat" />
