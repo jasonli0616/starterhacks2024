@@ -1,80 +1,31 @@
 "use client"
 
+import Image from "next/image";
 import "./Dashboard.css";
-import {useEffect, useState} from "react";
-
-function DashboardBg() {
-  //return <style>{'body {background-color: #BBE3D4; }' } </style>
-  return <img src="https://i.imgur.com/GiqDyDR.png" width={1920} height={1080} alt="background" />; //image of blue background with lines
-}
+import MatchingButton from "./components/MatchingButton";
+import { Apple, Github, Google } from "react-bootstrap-icons";
 
 function TeamUpLogo() {
-  return <img src="https://i.imgur.com/2gRXjvM.png" width={500} height={420} alt="ecovader logo" />;
+  return <img src={'logo.png'} width={'300px'} alt="TeamUp Logo" />;
 }
 
-function InputComponent() {
-  // Declare state variables to hold input values
-  const [inputValue, setInputValue] = useState('');
-
-  // Event handler to update the state when the input changes
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  return (
-    <div>
-      {/* Input field with an onChange event */}
-      <input
-        style={{
-          width: '60%',
-          height: '80%',
-          padding: '10px',
-          fontSize: '16px',
-          borderRadius: '10px',
-          border: '0.5px solid #0B3B36',
-          boxShadow: '0px 0px 10px 0px #0B3B36',
-          boxSizing: 'border-box',
-          textAlign: 'left',
-        }}
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Enter your email address to continue: "
-      />
-    </div>
-  );
-}
-
-function HeaderBg() {
-    return <style>{'header {background-color: #236D5E; }' } </style>
-}
 
 function Dashboard() {
   return (
     
-    <div className = "Dashboard">
-      <header className = "flex flex-col gap-4 justify-center items-center">
-        <br />
-        <DashboardBg />
+    <div className="dashboard">
         <TeamUpLogo />
-        <h1 className="text-9xl font-bold text-white stroke-black">
-          Together We Thrive: <i>Community-Led Solutions to Invasive Species!</i>
-        </h1>
-        <br />
-        </header>      
+        
+        <div className="signup-prompt">
+          <h3>Sign up or log in to get started.</h3>
+          <MatchingButton link="/api/auth/login" full>
+            Continue with <Google style={{padding: '3px'}} /> <Github style={{padding: '3px'}} /> <Apple style={{padding: '3px'}} />
+          </MatchingButton> 
+          <MatchingButton link="/api/manualauth/login" full>Continue with email</MatchingButton>
+        </div>
     </div>
   );
 }
 
-function DashboardWrapper() {
-  return (
-    <>
-      <h1>Hello</h1>
-      <a href="/api/auth/login">Login</a>
-      <Dashboard />
-    </>
-  )
-}
-
-export default DashboardWrapper;
+export default Dashboard;
 
