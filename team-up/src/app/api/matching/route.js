@@ -32,12 +32,25 @@ export async function POST(req, res) {
         for (let preference of preferences) {
           if (foundUser.preferences[preference]) {
             let value = user.preferences[preference] - foundUser.preferences[preference];
-            times +=  value;
+            switch (Math.abs(value)) {
+              case 0:
+                times += 5
+                break;
+              case 1:
+                times += 4;
+                break;
+              case 2:
+                times += 2;
+                break;
+              default:
+                times += 1;
+                break;
+            }
           }
         }
 
         if (times) {
-          userIDs[foundUser._id.toString()] = times;
+          userIDs[foundUser.info.name] = times;
         }
       }
 
