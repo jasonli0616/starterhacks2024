@@ -25,7 +25,8 @@ function Page() {
                   ...prevOutput,
                   [emailAddress]: res1.data.preferences,
                 }));
-              });
+              })
+              .finally(() => console.log(output));
           }
         });
     }
