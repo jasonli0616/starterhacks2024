@@ -1,9 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import MatchingButton from "../components/MatchingButton";
-
+import Image from "next/image";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -49,20 +48,18 @@ function Page() {
     "Fencing 🤺 ",
   ];
 
-
   const submit = () => {
     axios.post(`/api/update_pref`, { info: info, user: user }).then((res) => {
       if (res.data.success) {
         console.log("Success");
       }
     });
-    
   };
 
   const handleButtonClick = (key) => {
     setInfo((prevInfo) => ({
       ...prevInfo,
-      [key]: prevInfo[key] > 0 ? 0 : 1,
+      [key]: 1,
     }));
   };
 
@@ -70,20 +67,10 @@ function Page() {
   const firstHalfKeys = keys.slice(0, Math.ceil(keys.length / 2));
   const secondHalfKeys = keys.slice(Math.ceil(keys.length / 2), keys.length);
 
-  useEffect(() => {
-    axios.post("/api/getuserpref", {email: user.email})
-    .then((res) => {
-      if (res.data.success) {
-        setInfo(res.data.preferences);
-      }
-    });
-  }, [])
-
   return (
     <div className="w-full h-screen bg-[#08183c] flex flex-col items-center">
-      <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-end">
-        <MatchingButton link="/api/auth/logout" className="h-[20px]">Log out</MatchingButton>
-      </div>
+      <PopUp text={"none"} value={"none"} setValue={"none"} />
+      <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-center"></div>
       <div className="mt-5 w-full h-5 text-center text-white text-2xl font-bold font-['Open Sans'] leading-tight">
         Select Sports of Interest
       </div>
@@ -94,7 +81,6 @@ function Page() {
               key={key}
               text={text[keys.indexOf(key)]}
               handleClick={() => handleButtonClick(key)}
-              defaultValue={info[firstHalfKeys[keys.indexOf(key)]]}
             />
           ))}
         </div>
@@ -104,25 +90,29 @@ function Page() {
               key={key}
               text={text[keys.indexOf(key)]}
               handleClick={() => handleButtonClick(key)}
-              defaultValue={info[secondHalfKeys[keys.indexOf(key)-keys.length/2]]}
             />
           ))}
         </div>
       </div>
-      <MatchingButton onclick={submit} full>
-        Continue
-      </MatchingButton>
+      <button
+        className="w-[90%] h-[60px] bg-[#99c53e] rounded-[14px]"
+        onClick={submit}
+      >
+        <div className="text-white text-xl font-extrabold font-['Nunito']">
+          continue{" "}
+        </div>
+      </button>
       <div className="w-full text-center mt-2">
-        <span className="text-white text-base leading-tight">
-          Don't see your sport?
+        <span className="text-white text-base font-bold font-['Nunito'] leading-tight">
+          Don’t see your sport?
         </span>
-        <span className="text-[#1a1c29] text-base leading-tight">
+        <span className="text-[#1a1c29] text-base font-bold font-['Nunito'] leading-tight">
           {" "}
         </span>
-        <span className="text-[#cef262] text-base leading-tight">
+        <span className="text-[#cef262] text-base font-bold font-['Nunito'] leading-tight">
           Other Sport.
         </span>
-        <span className="text-[#ef83ad] text-base leading-tight">
+        <span className="text-[#ef83ad] text-base font-bold font-['Nunito'] leading-tight">
           {" "}
         </span>
       </div>
@@ -130,26 +120,74 @@ function Page() {
   );
 }
 
-const Button = ({ text, handleClick, defaultValue }) => {
-  const [value, setValue] = useState(defaultValue);
+const Button = ({ text, handleClick }) => {
+  const [value, setValue] = useState(0);
   const handleChange = () => {
-    setValue((prev) => prev > 0 ? 0 : 1);
+    setValue(1);
     handleClick();
   };
 
   return (
-    <div>
-      <button
-        className={`${value ? "!bg-[#249577]" : ""} bg-[#6c8e3e] w-[160px] h-[54px] rounded-[14px] justify-center items-center flex `}
-        onClick={handleChange}
-      >
-        <div className="text-white text-xl">
-          {text}
-        </div>
-      </button>
+    <button
+      className={`${value ? "!bg-[#249577]" : ""} bg-[#6c8e3e] w-[160px] h-[54px] rounded-[14px] justify-center items-center flex `}
+      onClick={handleChange}
+    >
+      <div className="text-white text-xl font-extrabold font-['Nunito']">
+        {text}
+      </div>
+    </button>
+  );
+};
 
+const PopUp = ({ text, value, setValue }) => {
+  return (
+    <div className="absolute w-[90%] h-[450px] bg-white">
+      <div className="realtive w-[full] h-[450px] flex flex-col item-center justify-evenly">
+        <div className="w-full flex flex-col justify-center items-end -mt-6 pr-3">
+          {" "}
+          <Image src="/X.svg" width={30} height={30} alt="x" />
+          <div className="w-full h-[4px] bg-[#f4f4f4] mt-3"> </div>
+        </div>
+        <div className="w-[325px] h-5 text-center text-[#1a1c29] text-xl font-bold font-['Open Sans'] leading-tight">
+          Choose Your Skill Level
+        </div>
+        <div className="w-full flex justify-evenly items-center">
+          <Box
+            image="/novice.svg"
+            title={"Novice"}
+            text={
+              "New to the sport, learning basic rules and skills (<1 year experience)"
+            }
+          />
+          <Box
+            image="/intermediate.svg"
+            title={"Intermediate"}
+            text={"Improving techniques and (1-5 years of experience)"}
+          />
+          <Box
+            image="/advanced.svg"
+            title={"Advanced"}
+            text={
+              "Very skilled, plays at a high level and (>5 years of experience)"
+            }
+          />
+        </div>
+      </div>
     </div>
   );
 };
 
+const Box = ({ image, title, text }) => {
+  return (
+    <div className="w-[30%] h-[261px] bg-[#f4f4f4] rounded-lg flex flex-col justify-evenly items-center">
+      <div className="w-[90%] text-center text-[#6a6a6a] text-[15px] font-extrabold font-['Nunito']">
+        {title}
+      </div>
+      <Image src={image} width={75} height={100} alt={title} />
+      <div className="w-[90%] text-center text-[#070f20] text-[10px] font-normal font-['Nunito'] leading-tight">
+        {text}
+      </div>
+    </div>
+  );
+};
 export default Page;
