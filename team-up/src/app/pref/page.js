@@ -4,6 +4,7 @@ import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import MatchingButton from "../components/MatchingButton";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -67,6 +68,9 @@ function Page() {
         console.log("Success");
       }
     });
+
+    const router = useRouter();
+    router.push("/match");
   };
 
   const handleButtonClick = (key) => {
@@ -136,17 +140,10 @@ function Page() {
           ))}
         </div>
       </div>
-      <button
-        className="w-[90%] h-[60px] bg-[#99c53e] rounded-[14px]"
-        onClick={submit}
-      >
-        <div className="text-white text-xl font-extrabold font-['Nunito']">
-          continue{" "}
-        </div>
-      </button>
+      <MatchingButton full onclick={submit}>Continue</MatchingButton>
       <div className="w-full text-center mt-2">
         <span className="text-white text-base font-bold font-['Nunito'] leading-tight">
-          Don’t see your sport?
+          Don't see your sport?
         </span>
         <span className="text-[#1a1c29] text-base font-bold font-['Nunito'] leading-tight">
           {" "}

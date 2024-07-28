@@ -50,7 +50,7 @@ export async function POST(req, res) {
         }
 
         if (times) {
-          userIDs[foundUser.info.name] = times;
+          userIDs[foundUser.info.email] = times;
         }
       }
 
