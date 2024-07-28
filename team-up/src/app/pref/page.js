@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
+import MatchingButton from "../components/MatchingButton";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -109,7 +110,9 @@ function Page() {
         popUp={popUp}
         setPopUp={setPopUp}
       />
-      <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-center"></div>
+      <div className="w-full h-[50px] bg-[#79849c] flex flex-col justify-center items-end">
+        <MatchingButton link="/api/auth/logout">Log out</MatchingButton>
+      </div>
       <div className="mt-5 w-full h-5 text-center text-white text-2xl font-bold font-['Open Sans'] leading-tight">
         Select Sports of Interest
       </div>
