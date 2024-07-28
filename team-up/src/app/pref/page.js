@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import MatchingButton from "../components/MatchingButton";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const { user, error, isLoading } = useUser();
@@ -54,6 +55,7 @@ function Page() {
         console.log("Success");
       }
     });
+    
   };
 
   const handleButtonClick = (key) => {
@@ -95,14 +97,9 @@ function Page() {
           ))}
         </div>
       </div>
-      <button
-        className="w-[90%] h-[60px] bg-[#99c53e] rounded-[14px]"
-        onClick={submit}
-      >
-        <div className="text-white text-xl">
-          Continue{" "}
-        </div>
-      </button>
+      <MatchingButton onclick={submit} full>
+        Continue
+      </MatchingButton>
       <div className="w-full text-center mt-2">
         <span className="text-white text-base leading-tight">
           Don't see your sport?

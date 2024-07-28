@@ -1,24 +1,57 @@
+import clientPromise from "@/app/components/mongodb";
 import { NextResponse } from "next/server";
-import clientPromise from "../../../components/mongodb";
 
 export async function POST(req, res) {
-  console.info("came to matching");
+  try {
+    const incomingData = await req.json();
+    const userEmail = incomingData.email;
 
+    const client = await clientPromise;
+    const db = client.db();
 
-  const data = await req.json();
-  const client = await clientPromise;
-  const db = client.db();
+    let userIDs = {};
 
-  const user = await db.collection("users").findOne({ email: data.email });
+    let user = await db
+      .collection("users")
+      .findOne({ email: userEmail });
 
-  if (user) {
-    console.info(user);
-    console.log(user);
-    if (data.password === user.password) {
-      return NextResponse.json({ success: true });
-    } else {
-      return NextResponse.json({ success: false, error: "Incorrect Password" });
+    // Get user preferences
+    if (user) {
+      const preferences = Object.keys(user.preferences).filter(k => user.preferences[k]);
+      
+      // Find users with same preferences
+      let output = await db
+        .collection("users")
+        .find({ email: { '$ne': userEmail } })
+        .toArray();
+        
+      for (let foundUser of output) {
+
+        let times = 0;
+
+        for (let preference of preferences) {
+          if (foundUser.preferences[preference]) {
+            times++;
+          }
+        }
+
+        if (times) {
+          userIDs[foundUser._id.toString()] = times;
+        }
+      }
+
+      return NextResponse.json(
+        { success: true, userIDs: Object.keys(userIDs).sort((a, b) => userIDs[b] - userIDs[a]) }
+      )
+
     }
+
+    //Object.keys(obj).filter(k => obj[k]);
+  } catch (error) {
+    console.error("Error getting DB from matching algorithm", error);
+    return NextResponse.json(
+      { success: false, error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
-  return NextResponse.json({ success: false, error: "User Not Found" });
 }
