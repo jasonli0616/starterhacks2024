@@ -21,12 +21,13 @@ export async function POST(req, res) {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   try {
-    const prompt = req.body.prompt || "Write a story about an AI and magic";
-    const result = await model.generateContent(prompt);
+    const prompt = await req.json();
+    console.log(prompt, "prompt");
+    const result = await model.generateContent(prompt.prompt);
     const response = await result.response;
     console.log(response.text());
     const text = response.text();
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, answer: text });
   } catch (error) {
     return NextResponse.json({ success: false });
   }
